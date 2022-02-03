@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@500;600&display=swap');
+:root{
+    --primary:#3c45a1;
+    --secondary:#006dc7;
+    --primaryalt:#42a9fd;
+    --secondaryalt:#11003f;
+    --shadow:#00000069;
+    --white:#ffffff;
+    --title:rgb(0, 116, 224);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather Sans', sans-serif;
+    word-spacing: 2px;
+}
+
+.App{
+    background: linear-gradient(to bottom,var(--primary),var(--secondary));
+    color: white;
+    min-height: 100vh;
+    height: fit-content;
+    padding: 1.5rem;
+}
+
+.title{
+    color: var(--title);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    background-color: var(--white);
+    width: 70%;
+    position: relative;
+    font-size: 1.5rem;
+    height: 3rem;
+    line-height: 3rem;
+    left: 50%;
+    transform: translate(-50%,0);
+    margin-bottom: 2rem;
+    top: -1.4rem;
+    border-radius: 0 0 1.3rem 1.3rem;
+    box-shadow: 0px 0px 50px var(--shadow);
+}
+
+.sec-title{
+    color: var(--primaryalt);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.todo{
+    background-color: var(--secondaryalt);
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+    border-radius: 0.7rem;
+    transition: 0.5s ease;
+}
+
+.todo-title{
+    font-size: 1rem;
+}
+
+.todo.isdone{
+    text-decoration: line-through;
+    color: var(--primaryalt);
+    opacity: 0.8;
+}
+
+.todo:hover{
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.addpopup{
+    width: 100%;
+    position: fixed;
+    bottom: 3rem;
+    left: 80%;
+}
+.addpopup img{
+    height: 3rem;
+    background-color: var(--primaryalt);
+    width: fit-content;
+    border-radius: 50%;
+    box-shadow: 0px 0px 50px var(--shadow);
+    transition: 0.5s ease;
+}
+
+.addpopup:hover img{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.popup{
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--secondaryalt);
+    padding: 1rem;
+    border-radius: 0.4rem;
+    width: 90%;
+    height: 30vh;
+}
+
+.popup .header{
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.popup .header .add-todo-titile{
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    color: var(--primaryalt);
+    font-size: 1.2rem;
+}
+
+.popup .header .closePopUp{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: rgb(255, 81, 0);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    height: fit-content;
+    cursor: pointer;
+}
+
+.add-content .newtodo-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    height: 100%;
+}
+
+.newtodo-title span{
+    position: absolute;
+    left: 1rem;
+    font-size: 1rem;
+    color: var(--primaryalt);
+}
+
+.newtodo-title input{
+    width: 65%;
+    font-size: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.add-content .create-btn{
+    text-align: center;
+    color: var(--primaryalt);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.5s ease;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+.add-content .create-btn:hover{
+    color: #aacbff;
+}
