@@ -105,7 +105,7 @@
     padding: 1rem;
     border-radius: 0.4rem;
     width: 90%;
-    height: 30vh;
+    height: 300px;
 }
 
 .popup .header{
@@ -160,11 +160,11 @@
     font-size: 1.1rem;
     cursor: pointer;
     transition: 0.5s ease;
-    display: flex;
-    justify-content: center;
     width: 100%;
-    position: relative;
-    bottom: 0;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%,0);
 }
 
 .add-content .create-btn:hover{
