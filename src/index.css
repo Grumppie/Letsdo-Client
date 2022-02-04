@@ -171,6 +171,8 @@
     bottom: 10%;
     left: 50%;
     transform: translate(-50%,0);
+    background: none ;
+    border:none;
 }
 
 .add-content .create-btn:hover{
