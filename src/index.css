@@ -44,6 +44,12 @@
     box-shadow: 0px 0px 50px var(--shadow);
 }
 
+.hero .stats{
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
 .sec-title{
     color: var(--primaryalt);
     font-size: 1rem;

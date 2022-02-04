@@ -7,6 +7,7 @@ function App() {
   const [popUpActive, setPopUpActive] = useState(false)
   const [addTodo, setAddTodo] = useState("")
   let [refresh, setRefresh] = useState(0)
+  const [completedNumber, setCompletedNumber] = useState(0)
 
   const ref = () => {
     setRefresh(++refresh % 2)
@@ -14,6 +15,7 @@ function App() {
 
   useEffect(() => {
     getTodos()
+    getCompletedTodos()
   }, [refresh])
 
   const getTodos = async () => {
@@ -31,16 +33,18 @@ function App() {
     try {
       const raw = await fetch(Api_base + 'todos/' + id)
       const data = await raw.json()
-
+      let completed = 0;
       setTodos(() => {
-        const list = todos.map(todo => {
-          if (todo._id === data._id) {
-            todo.completed = data.completed
-          }
-          return todo
-        })
-        ref()
-        return list
+        return (
+          todos.map(todo => {
+            if (todo._id === data._id) {
+              todo.completed = data.completed
+              completed++;
+            }
+            setCompletedNumber(completed)
+            return todo
+          })
+        )
       })
     } catch (error) {
       console.log(error.message)
@@ -52,7 +56,6 @@ function App() {
       await fetch(Api_base + 'todos/' + id, { method: "DELETE" })
 
       setTodos(() => todos.filter(todo => todo._id !== id))
-      ref()
     } catch (error) {
       console.log(error.message)
     }
@@ -72,9 +75,22 @@ function App() {
     }
   }
 
+  const getCompletedTodos = async () => {
+    const data = await fetch(Api_base + 'todos/').then(res => res.json())
+    const completed = data.filter(todo => todo.completed)
+    setTimeout(setCompletedNumber(completed.length), 700)
+    ref()
+  }
+
   return (
     <div className="App">
-      <h1 className="title">Let's do</h1>
+      <div className="hero">
+        <h1 className="title">Let's do</h1>
+        <div className="stats">
+          <div className="total">{todos.length} <span>Total</span></div>
+          <div className="completed">{completedNumber} <span>Completed</span> </div>
+        </div>
+      </div>
       <h4 className="sec-title">List of Todos</h4>
       <div className="todos">
         {todos.map((todo) => {
