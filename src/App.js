@@ -22,6 +22,7 @@ function App() {
       const rawtodos = await fetch(Api_base + 'todos/')
       const todolist = await rawtodos.json()
       setTodos(todolist)
+      getCompletedTodos()
     } catch (error) {
       console.log(error.message);
     }
