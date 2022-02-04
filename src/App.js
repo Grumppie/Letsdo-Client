@@ -15,7 +15,6 @@ function App() {
 
   useEffect(() => {
     getTodos()
-    getCompletedTodos()
   }, [refresh])
 
   const getTodos = async () => {
@@ -33,18 +32,15 @@ function App() {
     try {
       const raw = await fetch(Api_base + 'todos/' + id)
       const data = await raw.json()
-      let completed = 0;
       setTodos(() => {
-        return (
-          todos.map(todo => {
-            if (todo._id === data._id) {
-              todo.completed = data.completed
-              completed++;
-            }
-            setCompletedNumber(completed)
-            return todo
-          })
-        )
+        const list = todos.map(todo => {
+          if (todo._id === data._id) {
+            todo.completed = data.completed
+          }
+          return todo
+        })
+        getCompletedTodos()
+        return list
       })
     } catch (error) {
       console.log(error.message)
@@ -54,7 +50,7 @@ function App() {
   const deleteTodo = async id => {
     try {
       await fetch(Api_base + 'todos/' + id, { method: "DELETE" })
-
+      ref()
       setTodos(() => todos.filter(todo => todo._id !== id))
     } catch (error) {
       console.log(error.message)
@@ -78,8 +74,7 @@ function App() {
   const getCompletedTodos = async () => {
     const data = await fetch(Api_base + 'todos/').then(res => res.json())
     const completed = data.filter(todo => todo.completed)
-    setTimeout(setCompletedNumber(completed.length), 700)
-    ref()
+    setCompletedNumber(completed.length)
   }
 
   return (
