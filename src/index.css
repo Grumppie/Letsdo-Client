@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 :root{
     --primary:#3c45a1;
     --secondary:#006dc7;
@@ -6,7 +7,8 @@
     --secondaryalt:#11003f;
     --shadow:#00000069;
     --white:#ffffff;
-    --title:rgb(0, 116, 224);
+    --title:#0074e0;
+    --pink:#ffb6c2;
 }
 
 *{
@@ -102,79 +104,105 @@
     cursor: pointer;
 }
 
-.popup{
-    position: fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: var(--secondaryalt);
-    padding: 1rem;
-    border-radius: 0.4rem;
-    width: 90%;
-    height: 300px;
-}
+/* create page */
 
-.popup .header{
-    margin-bottom: 3rem;
-    position: relative;
-}
-
-.popup .header .add-todo-titile{
-    width: 100%;
+.createpage-header{
     text-align: center;
-    display: inline-block;
-    color: var(--primaryalt);
-    font-size: 1.2rem;
-}
-
-.popup .header .closePopUp{
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: rgb(255, 81, 0);
-    border-radius: 50%;
-    font-size: 1.2rem;
-    height: fit-content;
-    cursor: pointer;
-}
-
-.add-content .newtodo-title{
+    font-size: 1.5rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    height: 12vh;
+    justify-content: space-between;
+    margin-bottom: 4rem;
     align-items: center;
-    margin-bottom: 2rem;
-    height: 100%;
 }
 
-.newtodo-title span{
+.createpage-header .createpage-title{
+    color: var(--white);
+    margin-bottom: 2rem;
+}
+
+.createpage-header i{
+    color: var(--primaryalt);
+    width: fit-content;
+    border: 2px solid var(--secondary);
+    padding: 0.8rem;
+    border-radius: 50%;
+}
+
+.createpage{
+    display: flex;
+    flex-direction: column;
+}
+
+.createpage form{
+    width: 100%;
+    background: linear-gradient(to bottom right, rgba(7, 0, 26, 0.719), rgba(0, 0, 0, 0.3));
+    backdrop-filter: blur(0.4rem);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    align-items: flex-start;
+    box-shadow:0px 0px 10px var(--shadow);
+}
+
+.createpage form label,.createpage form input,.createpage form select,.createpage form .textbox textarea,.createpage .btn-container{
+    font-family: 'Montserrat';
+    color: var(--primaryalt);
+    appearance: none;
+    background:none;
+    border: none;
+    font-size: 1.3rem;
+}
+
+.createpage .textbox{
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    border-bottom: 2px solid var(--primary);
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0.3rem;
+}
+
+.createpage .newdes{
+    align-items: flex-start;
+}
+
+.createpage form .textbox label{
     position: absolute;
     left: 1rem;
-    font-size: 1rem;
-    color: var(--primaryalt);
+    font-size: 0.8rem;
+    color: #838dff;
 }
 
-.newtodo-title input{
-    width: 65%;
-    font-size: 1rem;
-    padding: 0.5rem;
+.createpage form .textbox input,.createpage form .textbox select,.createpage form .textbox textarea{
+    width: 60%;
+    outline: none;
     text-align: center;
+    font-size: medium;
+    resize: none;
+    font-size: 1.2rem;
+    overflow: hidden;
 }
 
-.add-content .create-btn{
-    text-align: center;
-    color: var(--primaryalt);
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: 0.5s ease;
+.createpage .btn-container{
+    margin-top: 1rem;
+    font-size: medium;
     width: 100%;
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translate(-50%,0);
-    background: none ;
-    border:none;
+    font-size: 1.2rem;
+    border: 2px solid var(--primary);
+    width: 50%;
+    padding: 0.3rem 0;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
-.add-content .create-btn:hover{
-    color: #aacbff;
+.createpage .btn-container i{
+    font-size: 1rem;
+    margin-left: 1rem;
 }
