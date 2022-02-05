@@ -25,23 +25,30 @@ const Create = () => {
         }
     }
 
-    const handleChange = (e) => {
+    const handleCategory = (e) => {
         e.preventDefault()
         setCategory(e.target.value);
     }
 
-    // <input type="text" className="title-input" onChange={e => setTitle(e.target.value)} value={title} />
-    // <button className="create-btn" onClick={createTodo}><span>Create todo</span></button>
+    const handleTitle = e => {
+        e.preventDefault();
+        setTitle(e.target.value)
+    }
+
+    const handleContent = e => {
+        e.preventDefault();
+        setContent(e.target.value)
+    }
     return (
         <div className='createpage'>
             <div className="createpage-header">
-                <span className="createpage-title">Create Todo</span>
-                <i class="fas fa-pencil-ruler"></i>
+                <span className="createpage-title">Add Todo</span>
+                <i className="fas fa-pencil-ruler"></i>
             </div>
             <form autoComplete="off">
                 <div className="category textbox">
                     <label htmlFor="category">Category</label>
-                    <select name="category" id="category" value={category} onChange={handleChange}>
+                    <select name="category" id="category" value={category} onChange={handleCategory}>
                         <option value={"work"} >work</option>
                         <option value={"chill"} >chill</option>
                         <option value={"family"} >family</option>
@@ -49,14 +56,14 @@ const Create = () => {
                 </div>
                 <div className="newtitle textbox">
                     <label htmlFor="new-title">Title</label>
-                    <input type="text" id="new-title" onChange={e => { e.preventDefault(); setTitle(e.target.value) }} value={title} />
+                    <input type="text" id="new-title" onChange={handleTitle} value={title} />
                 </div>
                 <div className="newdes textbox">
                     <label htmlFor="new-des">Des.</label>
-                    <textarea name="new-des" id="new-des" cols="30" rows="2" autoComplete='false' onChange={e => { e.preventDefault(); setContent(e.target.value) }} value={content}></textarea>
+                    <textarea name="new-des" id="new-des" cols="30" rows="2" autoComplete='false' onChange={handleContent} value={content}></textarea>
                 </div>
                 <div className="btn-container" onClick={createTodo}>
-                    Create Todo <i class="fas fa-location-arrow"></i>
+                    Create Todo <i className="fas fa-location-arrow"></i>
                 </div>
             </form>
         </div >

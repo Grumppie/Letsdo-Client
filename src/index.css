@@ -147,7 +147,7 @@
     box-shadow:0px 0px 10px var(--shadow);
 }
 
-.createpage form label,.createpage form input,.createpage form select,.createpage form .textbox textarea,.createpage .btn-container{
+.createpage form label,.createpage form input,.createpage form select,.createpage form .textbox textarea,.createpage .btn-container,.createpage .newdate input::placeholder{
     font-family: 'Montserrat';
     color: var(--primaryalt);
     appearance: none;
@@ -206,3 +206,5 @@
     font-size: 1rem;
     margin-left: 1rem;
 }
+
+/* remove dd/mm/yyyy */
