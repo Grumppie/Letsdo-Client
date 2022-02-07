@@ -83,9 +83,6 @@ const Home = () => {
         setCompletedNumber(completed.length)
     }
 
-    const toggleDisplay = (todo) => {
-        setDisplayTodo(!displayTodo)
-    }
 
     // () => completeTodo(todo._id)
     return <div>
@@ -102,13 +99,10 @@ const Home = () => {
             {todos.map((todo) => {
                 const isdone = (todo.completed) ? "todo isdone" : "todo"
                 return (
-                    <div className={isdone} key={todo._id} onClick={() => toggleDisplay(todo)}>
+                    <div className={isdone} key={todo._id} onClick={() => completeTodo(todo._id)}>
                         <div className="check"><i className="fas fa-check-square"></i></div>
                         <div className="todo-title">{todo.title}</div>
                         <div className="delete-btn" onClick={() => deleteTodo(todo._id)}><i className="fas fa-trash"></i></div>
-                        {/* {(displayTodo) ? (
-                            <div>hello</div>
-                        ) : ""} */}
                     </div>
                 )
             })}
