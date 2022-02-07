@@ -17,6 +17,7 @@ const Home = () => {
 
     useEffect(() => {
         getTodos()
+        arrangeTodos()
     }, [refresh])
 
     const getTodos = async () => {
@@ -25,9 +26,23 @@ const Home = () => {
             const todolist = await rawtodos.json()
             setTodos(todolist)
             getCompletedTodos()
+            return todolist
         } catch (error) {
             console.log(error.message);
         }
+    }
+
+    const arrangeTodos = async () => {
+        try {
+            const todos = await getTodos();
+            const completed = todos.filter(todo => todo.completed === true)
+            const incomplete = todos.filter(todo => todo.completed === false)
+            setTodos([...incomplete, ...completed])
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+
     }
 
     const completeTodo = async id => {
@@ -42,6 +57,7 @@ const Home = () => {
                     return todo
                 })
                 getCompletedTodos()
+                arrangeTodos()
                 return list
             })
         } catch (error) {
