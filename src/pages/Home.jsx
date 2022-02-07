@@ -8,8 +8,9 @@ const Home = () => {
 
 
     const [todos, setTodos] = useState([])
-    let [refresh, setRefresh] = useState(0)
     const [completedNumber, setCompletedNumber] = useState(0)
+    const [displayTodo, setDisplayTodo] = useState(false)
+    let [refresh, setRefresh] = useState(0)
 
     const ref = () => {
         setRefresh(++refresh % 2)
@@ -82,6 +83,11 @@ const Home = () => {
         setCompletedNumber(completed.length)
     }
 
+    const toggleDisplay = (todo) => {
+        setDisplayTodo(!displayTodo)
+    }
+
+    // () => completeTodo(todo._id)
     return <div>
 
         <div className="hero">
@@ -96,14 +102,18 @@ const Home = () => {
             {todos.map((todo) => {
                 const isdone = (todo.completed) ? "todo isdone" : "todo"
                 return (
-                    <div className={isdone} key={todo._id} onClick={() => completeTodo(todo._id)}>
+                    <div className={isdone} key={todo._id} onClick={() => toggleDisplay(todo)}>
                         <div className="check"><i className="fas fa-check-square"></i></div>
                         <div className="todo-title">{todo.title}</div>
                         <div className="delete-btn" onClick={() => deleteTodo(todo._id)}><i className="fas fa-trash"></i></div>
+                        {/* {(displayTodo) ? (
+                            <div>hello</div>
+                        ) : ""} */}
                     </div>
                 )
             })}
         </div>
+
         <Link to='/create'>
             <div className="addpopup"><img src="https://img.icons8.com/ios-filled/50/000000/add--v1.png" /></div>
         </Link>
