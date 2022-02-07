@@ -207,4 +207,14 @@
     margin-left: 1rem;
 }
 
-/* remove dd/mm/yyyy */
+.footer{
+    position: fixed;
+    width: 100%;
+    bottom: 3%;
+    left: 23%;
+    font-size: 0.8rem;
+}
+
+.footer i{
+    color: red;
+}
