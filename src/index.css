@@ -27,6 +27,11 @@
     padding: 1.5rem;
 }
 
+.home{
+    max-width: 60vh;
+    margin: auto;
+}
+
 .title{
     color: var(--title);
     text-transform: uppercase;
@@ -200,6 +205,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    cursor: pointer;
 }
 
 .createpage .btn-container i{
@@ -208,10 +214,13 @@
 }
 
 .footer{
-    position: fixed;
+    align-self: center;
+    position: absolute;
+    text-align: center;
     width: 100%;
     bottom: 3%;
-    left: 23%;
+    left: 50%;
+    transform: translate(-50%,0);
     font-size: 0.8rem;
 }
 

@@ -35,7 +35,8 @@ const Home = () => {
 
     const arrangeTodos = async () => {
         try {
-            const todos = await getTodos();
+            const rawtodos = await fetch(Api_base + 'todos/')
+            const todos = await rawtodos.json()
             const completed = todos.filter(todo => todo.completed === true)
             const incomplete = todos.filter(todo => todo.completed === false)
             setTodos([...incomplete, ...completed])
@@ -78,14 +79,26 @@ const Home = () => {
 
 
     const getCompletedTodos = async () => {
-        const data = await fetch(Api_base + 'todos/').then(res => res.json())
-        const completed = data.filter(todo => todo.completed)
+        const rawtodos = await fetch(Api_base + 'todos/')
+        const todos = await rawtodos.json()
+        const completed = todos.filter(todo => todo.completed)
         setCompletedNumber(completed.length)
     }
 
+    const categoryIcon = (category) => {
+        // eslint-disable-next-line default-case
+        switch (category) {
+            case "work":
+                return (<i class="fas fa-briefcase"></i>)
+            case "chill":
+                return (<i class="fas fa-laugh-beam"></i>)
+            case "family":
+                return (<i class="fas fa-users"></i>)
+        }
+    }
 
     // () => completeTodo(todo._id)
-    return <div>
+    return <div className='home'>
 
         <div className="hero">
             <h1 className="title">Let's do</h1>
@@ -100,7 +113,9 @@ const Home = () => {
                 const isdone = (todo.completed) ? "todo isdone" : "todo"
                 return (
                     <div className={isdone} key={todo._id} onClick={() => completeTodo(todo._id)}>
-                        <div className="check"><i className="fas fa-check-square"></i></div>
+                        <div className="check">
+                            {categoryIcon(todo.category)}
+                        </div>
                         <div className="todo-title">{todo.title}</div>
                         <div className="delete-btn" onClick={() => deleteTodo(todo._id)}><i className="fas fa-trash"></i></div>
                     </div>

@@ -6,7 +6,7 @@ const Api_base = `https://lets-do-gru.herokuapp.com/`
 
 const Create = () => {
     const [title, setTitle] = useState("")
-    const [category, setCategory] = useState("")
+    const [category, setCategory] = useState("work")
     const [content, setContent] = useState("")
 
     const navigate = useNavigate()
@@ -17,7 +17,7 @@ const Create = () => {
             await fetch(Api_base + 'todos/', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ "title": title, "content": content, "category": category })
+                body: JSON.stringify({ "title": title, "category": category })
             }).then(res => res.json)
             goback()
         } catch (error) {
@@ -55,13 +55,13 @@ const Create = () => {
                     </select>
                 </div>
                 <div className="newtitle textbox">
-                    <label htmlFor="new-title">Title</label>
+                    <label htmlFor="new-title">Todo</label>
                     <input type="text" id="new-title" onChange={handleTitle} value={title} />
                 </div>
-                <div className="newdes textbox">
+                {/* <div className="newdes textbox">
                     <label htmlFor="new-des">Des.</label>
                     <textarea name="new-des" id="new-des" cols="30" rows="2" autoComplete='false' onChange={handleContent} value={content}></textarea>
-                </div>
+                </div> */}
                 <div className="btn-container" onClick={createTodo}>
                     Create Todo <i className="fas fa-location-arrow"></i>
                 </div>
