@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Api_base = `https://lets-do-gru.herokuapp.com/`
 
@@ -89,11 +89,11 @@ const Home = () => {
         // eslint-disable-next-line default-case
         switch (category) {
             case "work":
-                return (<i class="fas fa-briefcase"></i>)
+                return (<i className="fas fa-briefcase"></i>)
             case "chill":
-                return (<i class="fas fa-laugh-beam"></i>)
+                return (<i className="fas fa-laugh-beam"></i>)
             case "family":
-                return (<i class="fas fa-users"></i>)
+                return (<i className="fas fa-users"></i>)
         }
     }
 
@@ -112,13 +112,15 @@ const Home = () => {
             {todos.map((todo) => {
                 const isdone = (todo.completed) ? "todo isdone" : "todo"
                 return (
-                    <div className={isdone} key={todo._id} onClick={() => completeTodo(todo._id)}>
-                        <div className="check">
-                            {categoryIcon(todo.category)}
+                    <Link to={`todos/${todo._id}`} key={todo._id}>
+                        <div className={isdone}>
+                            <div className="check">
+                                {categoryIcon(todo.category)}
+                            </div>
+                            <div className="todo-title">{todo.title}</div>
+                            <div className="delete-btn" onClick={() => deleteTodo(todo._id)}><i className="fas fa-trash"></i></div>
                         </div>
-                        <div className="todo-title">{todo.title}</div>
-                        <div className="delete-btn" onClick={() => deleteTodo(todo._id)}><i className="fas fa-trash"></i></div>
-                    </div>
+                    </Link>
                 )
             })}
         </div>
