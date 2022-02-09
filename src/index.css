@@ -90,6 +90,7 @@ a{
 
 .todo-title{
     font-size: 1rem;
+    pointer-events: none;
 }
 
 .todo-contents.isdone{
