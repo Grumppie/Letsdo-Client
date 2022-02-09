@@ -146,6 +146,7 @@ a{
     display: flex;
     flex-direction: column;
     max-width: 60vh;
+    margin:auto
 }
 
 .createpage form{
