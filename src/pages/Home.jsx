@@ -112,9 +112,9 @@ const Home = () => {
         <h4 className="sec-title">List of Todos</h4>
         <div className="todos">
             {todos.map((todo) => {
-                const isdone = (todo.completed) ? "todo isdone" : "todo"
+                const isdone = (todo.completed) ? "todo-contents isdone" : "todo-contents"
                 return (
-                    <Link to={`todos/${todo._id}`} key={todo._id}>
+                    <div className='todo' key={todo._id} onClick={() => completeTodo(todo._id)}>
                         <div className={isdone}>
                             <div className="check">
                                 {categoryIcon(todo.category)}
@@ -122,7 +122,10 @@ const Home = () => {
                             <div className="todo-title">{todo.title}</div>
                             <div className="delete-btn" onClick={() => deleteTodo(todo._id)}><i className="fas fa-trash"></i></div>
                         </div>
-                    </Link>
+                        <Link to={`todos/${todo._id}`} key={todo._id}>
+                            <div className="show-btn">show details</div>
+                        </Link>
+                    </div>
                 )
             })}
         </div>

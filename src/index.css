@@ -74,21 +74,32 @@ a{
     background-color: var(--secondaryalt);
     margin-bottom: 1rem;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     padding: 1rem;
-    align-items: center;
     border-radius: 0.7rem;
     transition: 0.5s ease;
+}
+
+.todo-contents{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
 .todo-title{
     font-size: 1rem;
 }
 
-.todo.isdone{
+.todo-contents.isdone{
     text-decoration: line-through;
     color: var(--primaryalt);
     opacity: 0.8;
+}
+
+.show-btn{
+    text-align: center;
+    cursor: pointer;
 }
 
 .todo:hover{
