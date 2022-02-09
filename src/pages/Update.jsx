@@ -102,6 +102,9 @@ const Update = () => {
                     </div>
                 </div> */}
             </form>
+            <div className="work-in-progress">
+                work in progress <img src="https://img.icons8.com/material-outlined/50/000000/work.png" />
+            </div>
         </div>
     );
 
