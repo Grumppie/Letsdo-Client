@@ -2,7 +2,8 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
-const Api_base = `https://lets-do-gru.herokuapp.com/`
+// const Api_base = `https://lets-do-gru.herokuapp.com/`
+const Api_base = 'http://localhost:4000/'
 
 const Update = () => {
 
@@ -11,7 +12,7 @@ const Update = () => {
     const [title, setTitle] = useState("")
     const [category, setCategory] = useState()
     const [content, setContent] = useState("")
-    const [completed, setcompleted] = useState(false)
+    const [completed, setcompleted] = useState()
 
     const navigate = useNavigate()
     const goback = () => navigate('/', { replace: true })
@@ -19,12 +20,17 @@ const Update = () => {
     useEffect(() => data(), [])
 
     const data = async () => {
-        const rawtodos = await fetch(Api_base + 'todos/' + `${params.todoId}`)
-        const todo = await rawtodos.json()
-        setTodo(todo)
-        setTitle(todo.title)
-        setCategory(todo.category)
-        setContent(todo.content)
+        try {
+            const rawtodos = await fetch(Api_base + 'todos/' + `${params.todoId}`)
+            const todo = await rawtodos.json()
+            setTodo(todo)
+            setTitle(todo.title)
+            setCategory(todo.category)
+            setContent(todo.content)
+            setcompleted(todo.completed)
+        } catch (error) {
+            console.log(error.message)
+        }
     }
 
     const handleCategory = (e) => {
@@ -45,9 +51,9 @@ const Update = () => {
     const updateTodo = async () => {
         try {
             await fetch(Api_base + 'todos/' + `${params.todoId}`, {
-                method: "PATCH",
+                method: "patch",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ "title": title, "category": category, "content": content, completed })
+                body: JSON.stringify({ "title": title, "category": category, completed })
             }).then(res => res.json)
             goback()
         } catch (error) {
@@ -57,6 +63,7 @@ const Update = () => {
 
     const toggleComplete = () => {
         setcompleted(!completed)
+        goback()
     }
 
 
@@ -79,19 +86,19 @@ const Update = () => {
                     <label htmlFor="new-title">Todo</label>
                     <input type="text" id="new-title" onChange={handleTitle} value={title} />
                 </div>
-                <div className="updes textbox">
+                {/* <div className="updes textbox">
                     <label htmlFor="new-des">Des.</label>
                     <textarea name="new-des" id="new-des" cols="30" rows="2" autoComplete='false' onChange={handleContent} value={content}></textarea>
-                </div>
+                </div> */}
                 <div className="btns">
                     <div className="completed-btn" onClick={toggleComplete}>
-                        {!completed ? "completed" : "Incomplete"}
-                        {!completed ? (<i className="fas fa-check-circle"></i>) : (<i className="fas fa-times-circle"></i>)}
+                        {completed ? "completed" : "Incomplete"}
+                        {completed ? (<i className="fas fa-check-circle"></i>) : (<i className="fas fa-times-circle"></i>)}
                     </div>
-                    <div className="btn-container" onClick={updateTodo}>
+                    {/* <div className="btn-container" onClick={updateTodo}>
                         Save Todo
                         <i className="fas fa-location-arrow"></i>
-                    </div>
+                    </div> */}
                 </div>
             </form>
         </div>

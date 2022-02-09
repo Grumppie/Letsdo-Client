@@ -2,7 +2,9 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 
-const Api_base = `https://lets-do-gru.herokuapp.com/`
+// const Api_base = `https://lets-do-gru.herokuapp.com/`
+const Api_base = 'http://localhost:4000/'
+
 
 const Home = () => {
 

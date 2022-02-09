@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const Api_base = `https://lets-do-gru.herokuapp.com/`
+// const Api_base = `https://lets-do-gru.herokuapp.com/`
+const Api_base = 'http://localhost:4000/'
+
 
 const Create = () => {
     const [title, setTitle] = useState("")
@@ -58,10 +60,10 @@ const Create = () => {
                     <label htmlFor="new-title">Todo</label>
                     <input type="text" id="new-title" onChange={handleTitle} value={title} />
                 </div>
-                <div className="newdes textbox">
+                {/* <div className="newdes textbox">
                     <label htmlFor="new-des">Des.</label>
                     <textarea name="new-des" id="new-des" cols="30" rows="2" autoComplete='false' onChange={handleContent} value={content}></textarea>
-                </div>
+                </div> */}
                 <div className="btn-container" onClick={createTodo}>
                     Create Todo <i className="fas fa-location-arrow"></i>
                 </div>
