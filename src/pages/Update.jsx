@@ -95,16 +95,16 @@ const Update = () => {
                         <textarea name="new-des" id="new-des" cols="30" rows="2" autoComplete='false' onChange={handleContent} value={content}></textarea>
                     </div>
 
-                    {/* <div className="btns">
-                    <div className="completed-btn" onClick={toggleComplete}>
-                        {completed ? "completed" : "Incomplete"}
-                        {completed ? (<i className="fas fa-check-circle"></i>) : (<i className="fas fa-times-circle"></i>)}
+                    <div className="btns">
+                        <div className="completed-btn" onClick={toggleComplete}>
+                            {completed ? "completed" : "Incomplete"}
+                            {completed ? (<i className="fas fa-check-circle"></i>) : (<i className="fas fa-times-circle"></i>)}
+                        </div>
+                        <div className="btn-container" onClick={updateTodo}>
+                            Save Todo
+                            <i className="fas fa-location-arrow"></i>
+                        </div>
                     </div>
-                    <div className="btn-container" onClick={updateTodo}>
-                        Save Todo
-                        <i className="fas fa-location-arrow"></i>
-                    </div>
-                </div> */}
                 </form>
             ) :
                 (<div className="loader"><ReactBootStrap.Spinner animation="border" variant="info" /></div>)}
