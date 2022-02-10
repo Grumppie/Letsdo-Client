@@ -100,42 +100,46 @@ const Home = () => {
     }
 
     // () => completeTodo(todo._id)
-    return <div className='home'>
+    return (
+        <>
+            <div className='home'>
 
-        <div className="hero">
-            <h1 className="title">Let's do</h1>
-            <div className="stats">
-                <div className="total">{todos.length} <span>Total</span></div>
-                <div className="completed">{completedNumber} <span>Completed</span> </div>
-            </div>
-        </div>
-        <h4 className="sec-title">List of Todos</h4>
-        <div className="todos">
-            {todos.map((todo) => {
-                const isdone = (todo.completed) ? "todo-contents isdone" : "todo-contents"
-                return (
-                    <div className='todo' key={todo._id} onClick={() => completeTodo(todo._id)}>
-                        <div className={isdone}>
-                            <div className="check">
-                                {categoryIcon(todo.category)}
-                            </div>
-                            <div className="todo-title">{todo.title}</div>
-                            <div className="delete-btn" onClick={() => deleteTodo(todo._id)}><i className="fas fa-trash"></i></div>
-                        </div>
-                        <Link to={`todos/${todo._id}`} key={todo._id}>
-                            <div className="show-btn">show more</div>
-                        </Link>
+                <div className="hero">
+                    <h1 className="title">Let's do</h1>
+                    <div className="stats">
+                        <div className="total">{todos.length} <span>Total</span></div>
+                        <div className="completed">{completedNumber} <span>Completed</span> </div>
                     </div>
-                )
-            })}
-        </div>
-        <div className="footer">
-            made with <i className="fas fa-heart"></i> by Sarthak Pawar
-        </div>
-        <Link to='/create'>
-            <div className="addpopup"><img src="https://img.icons8.com/ios-filled/50/000000/add--v1.png" /></div>
-        </Link>
-    </div>;
+                </div>
+                <h4 className="sec-title">List of Todos</h4>
+                <div className="todos">
+                    {todos.map((todo) => {
+                        const isdone = (todo.completed) ? "todo-contents isdone" : "todo-contents"
+                        return (
+                            <div className='todo' key={todo._id} onClick={() => completeTodo(todo._id)}>
+                                <div className={isdone}>
+                                    <div className="check">
+                                        {categoryIcon(todo.category)}
+                                    </div>
+                                    <div className="todo-title">{todo.title}</div>
+                                    <div className="delete-btn" onClick={() => deleteTodo(todo._id)}><i className="fas fa-trash"></i></div>
+                                </div>
+                                <Link to={`todos/${todo._id}`} key={todo._id}>
+                                    <div className="show-btn">show more</div>
+                                </Link>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+            <div className="footer">
+                made with <i className="fas fa-heart"></i> by Sarthak Pawar
+            </div>
+            <Link to='/create'>
+                <div className="addpopup"><img src="https://img.icons8.com/ios-filled/50/000000/add--v1.png" /></div>
+            </Link>
+        </>
+    );
 };
 
 export default Home;
