@@ -56,7 +56,7 @@ const Update = () => {
             await fetch(Api_base + 'todos/' + `${params.todoId}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ "title": title, "category": category, completed })
+                body: JSON.stringify({ "title": title, "category": category, completed, content })
             }).then(res => res.json)
             goback()
         } catch (error) {
@@ -96,10 +96,6 @@ const Update = () => {
                     </div>
 
                     <div className="btns">
-                        <div className="completed-btn" onClick={toggleComplete}>
-                            {completed ? "completed" : "Incomplete"}
-                            {completed ? (<i className="fas fa-check-circle"></i>) : (<i className="fas fa-times-circle"></i>)}
-                        </div>
                         <div className="btn-container" onClick={updateTodo}>
                             Save Todo
                             <i className="fas fa-location-arrow"></i>
