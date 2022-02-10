@@ -51,7 +51,7 @@ const Update = () => {
     const updateTodo = async () => {
         try {
             await fetch(Api_base + 'todos/' + `${params.todoId}`, {
-                method: "patch",
+                method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ "title": title, "category": category, completed })
             }).then(res => res.json)
@@ -86,10 +86,10 @@ const Update = () => {
                     <label htmlFor="new-title">Todo</label>
                     <input type="text" id="new-title" onChange={handleTitle} value={title} />
                 </div>
-                {/* <div className="updes textbox">
+                <div className="updes textbox">
                     <label htmlFor="new-des">Des.</label>
                     <textarea name="new-des" id="new-des" cols="30" rows="2" autoComplete='false' onChange={handleContent} value={content}></textarea>
-                </div> */}
+                </div>
 
                 {/* <div className="btns">
                     <div className="completed-btn" onClick={toggleComplete}>

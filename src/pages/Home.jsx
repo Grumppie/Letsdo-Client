@@ -123,7 +123,7 @@ const Home = () => {
                             <div className="delete-btn" onClick={() => deleteTodo(todo._id)}><i className="fas fa-trash"></i></div>
                         </div>
                         <Link to={`todos/${todo._id}`} key={todo._id}>
-                            <div className="show-btn">show details</div>
+                            <div className="show-btn">show more</div>
                         </Link>
                     </div>
                 )
