@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import * as ReactBootStrap from 'react-bootstrap'
 
 const Api_base = `https://lets-do-gru.herokuapp.com/`
 // const Api_base = 'http://localhost:4000/'
@@ -13,6 +14,7 @@ const Update = () => {
     const [category, setCategory] = useState()
     const [content, setContent] = useState("")
     const [completed, setcompleted] = useState()
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
     const goback = () => navigate('/', { replace: true })
@@ -28,6 +30,7 @@ const Update = () => {
             setCategory(todo.category)
             setContent(todo.content)
             setcompleted(todo.completed)
+            setLoading(true)
         } catch (error) {
             console.log(error.message)
         }
@@ -73,25 +76,26 @@ const Update = () => {
                 <span className="up-title">My todo</span>
                 <i className="fas fa-edit"></i>
             </div>
-            <form autoComplete="off">
-                <div className="category textbox">
-                    <label htmlFor="category">Category</label>
-                    <select name="category" id="category" value={category} onChange={handleCategory}>
-                        <option value={"work"} >work</option>
-                        <option value={"chill"} >chill</option>
-                        <option value={"family"} >family</option>
-                    </select>
-                </div>
-                <div className="uptitle textbox">
-                    <label htmlFor="new-title">Todo</label>
-                    <input type="text" id="new-title" onChange={handleTitle} value={title} />
-                </div>
-                <div className="updes textbox">
-                    <label htmlFor="new-des">Des.</label>
-                    <textarea name="new-des" id="new-des" cols="30" rows="2" autoComplete='false' onChange={handleContent} value={content}></textarea>
-                </div>
+            {loading ? (
+                <form autoComplete="off">
+                    <div className="category textbox">
+                        <label htmlFor="category">Category</label>
+                        <select name="category" id="category" value={category} onChange={handleCategory}>
+                            <option value={"work"} >work</option>
+                            <option value={"chill"} >chill</option>
+                            <option value={"family"} >family</option>
+                        </select>
+                    </div>
+                    <div className="uptitle textbox">
+                        <label htmlFor="new-title">Todo</label>
+                        <input type="text" id="new-title" onChange={handleTitle} value={title} />
+                    </div>
+                    <div className="updes textbox">
+                        <label htmlFor="new-des">Des.</label>
+                        <textarea name="new-des" id="new-des" cols="30" rows="2" autoComplete='false' onChange={handleContent} value={content}></textarea>
+                    </div>
 
-                {/* <div className="btns">
+                    {/* <div className="btns">
                     <div className="completed-btn" onClick={toggleComplete}>
                         {completed ? "completed" : "Incomplete"}
                         {completed ? (<i className="fas fa-check-circle"></i>) : (<i className="fas fa-times-circle"></i>)}
@@ -101,7 +105,10 @@ const Update = () => {
                         <i className="fas fa-location-arrow"></i>
                     </div>
                 </div> */}
-            </form>
+                </form>
+            ) :
+                (<div className="loader"><ReactBootStrap.Spinner animation="border" variant="info" /></div>)}
+
             <div className="work-in-progress">
                 work in progress <img src="https://img.icons8.com/material-outlined/50/000000/work.png" />
             </div>

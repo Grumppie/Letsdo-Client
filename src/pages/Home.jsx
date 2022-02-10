@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
+import * as ReactBootStrap from 'react-bootstrap'
 
 const Api_base = `https://lets-do-gru.herokuapp.com/`
 // const Api_base = 'http://localhost:4000/'
@@ -11,7 +12,7 @@ const Home = () => {
 
     const [todos, setTodos] = useState([])
     const [completedNumber, setCompletedNumber] = useState(0)
-    const [displayTodo, setDisplayTodo] = useState(false)
+    const [loading, setLoading] = useState(false)
     let [refresh, setRefresh] = useState(0)
 
     const ref = () => {
@@ -29,6 +30,7 @@ const Home = () => {
             const todolist = await rawtodos.json()
             setTodos(todolist)
             getCompletedTodos()
+            setLoading(true)
             return todolist
         } catch (error) {
             console.log(error.message);
@@ -103,7 +105,6 @@ const Home = () => {
     return (
         <>
             <div className='home'>
-
                 <div className="hero">
                     <h1 className="title">Let's do</h1>
                     <div className="stats">
@@ -112,6 +113,7 @@ const Home = () => {
                     </div>
                 </div>
                 <h4 className="sec-title">List of Todos</h4>
+                {loading ? "" : (<div className="loader"><ReactBootStrap.Spinner animation="border" variant="info" /></div>)}
                 <div className="todos">
                     {todos.map((todo) => {
                         const isdone = (todo.completed) ? "todo-contents isdone" : "todo-contents"

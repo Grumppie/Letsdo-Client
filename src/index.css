@@ -70,6 +70,10 @@ a{
     margin-bottom: 0.5rem;
 }
 
+.loader{
+    text-align: center;
+}
+
 .todo{
     background-color: var(--secondaryalt);
     margin-bottom: 1rem;
