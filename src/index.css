@@ -355,14 +355,16 @@ a{
 /* footer */
 
 .footer{
-    align-self: center;
-    position: absolute;
+    position: relative;
     text-align: center;
     width: 100%;
     bottom: 3%;
     left: 50%;
     transform: translate(-50%,0);
     font-size: 0.8rem;
+    color: white;
+    background-color: black;
+    padding: 1rem;
 }
 
 .footer i{

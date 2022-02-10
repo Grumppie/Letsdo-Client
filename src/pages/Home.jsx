@@ -132,9 +132,6 @@ const Home = () => {
                     })}
                 </div>
             </div>
-            <div className="footer">
-                made with <i className="fas fa-heart"></i> by Sarthak Pawar
-            </div>
             <Link to='/create'>
                 <div className="addpopup"><img src="https://img.icons8.com/ios-filled/50/000000/add--v1.png" /></div>
             </Link>
