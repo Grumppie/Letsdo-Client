@@ -62,11 +62,11 @@ const Create = () => {
                 </div>
                 <div className="newdes textbox">
                     <label htmlFor="new-des">Des.</label>
-                    <textarea name="new-des" id="new-des" cols="30" rows="2" autoComplete='false' onChange={handleContent} value={content}></textarea>
+                    <textarea name="new-des" id="new-des" cols="30" rows="3" autoComplete='false' onChange={handleContent} value={content}></textarea>
                 </div>
-                <div className="btn-container" onClick={createTodo}>
+                {/* <div className="btn-container" onClick={createTodo}>
                     Create Todo <i className="fas fa-location-arrow"></i>
-                </div>
+                </div> */}
             </form>
         </div >
     );

@@ -44,6 +44,7 @@ const Home = () => {
             const completed = todos.filter(todo => todo.completed === true)
             const incomplete = todos.filter(todo => todo.completed === false)
             setTodos([...incomplete, ...completed])
+            setLoading(true)
         }
         catch (error) {
             console.log(error.message)
@@ -52,6 +53,7 @@ const Home = () => {
     }
 
     const completeTodo = async id => {
+        setLoading(false)
         try {
             const raw = await fetch(Api_base + 'todos/' + id)
             const data = await raw.json()
@@ -72,10 +74,12 @@ const Home = () => {
     }
 
     const deleteTodo = async id => {
+        setLoading(false)
         try {
             await fetch(Api_base + 'todos/' + id, { method: "DELETE" })
             ref()
             setTodos(() => todos.filter(todo => todo._id !== id))
+            setLoading(true)
         } catch (error) {
             console.log(error.message)
         }
@@ -113,30 +117,31 @@ const Home = () => {
                     </div>
                 </div>
                 <h4 className="sec-title">List of Todos</h4>
-                {loading ? "" : (<div className="loader"><ReactBootStrap.Spinner animation="border" variant="info" /></div>)}
-                <div className="todos">
-                    {todos.map((todo) => {
-                        const isdone = (todo.completed) ? "todo-contents isdone" : "todo-contents"
-                        return (
-                            <div className='todo' key={todo._id} onClick={() => completeTodo(todo._id)}>
-                                <div className={isdone}>
-                                    <div className="check">
-                                        {categoryIcon(todo.category)}
+                {loading ? (
+                    <><div className="todos">
+                        {todos.map((todo) => {
+                            const isdone = (todo.completed) ? "todo-contents isdone" : "todo-contents";
+                            return (
+                                <div className='todo' key={todo._id} onClick={() => completeTodo(todo._id)}>
+                                    <div className={isdone}>
+                                        <div className="check">
+                                            {categoryIcon(todo.category)}
+                                        </div>
+                                        <div className="todo-title">{todo.title}</div>
+                                        <div className="delete-btn" onClick={() => deleteTodo(todo._id)}><i className="fas fa-trash"></i></div>
                                     </div>
-                                    <div className="todo-title">{todo.title}</div>
-                                    <div className="delete-btn" onClick={() => deleteTodo(todo._id)}><i className="fas fa-trash"></i></div>
+                                    <Link to={`todos/${todo._id}`} key={todo._id}>
+                                        <div className="show-btn">show more</div>
+                                    </Link>
                                 </div>
-                                <Link to={`todos/${todo._id}`} key={todo._id}>
-                                    <div className="show-btn">show more</div>
-                                </Link>
-                            </div>
-                        )
-                    })}
-                </div>
+                            );
+                        })}
+                    </div><Link to='/create'>
+                            <div className="addpopup"><img src="https://img.icons8.com/ios-filled/50/000000/add--v1.png" /></div>
+                        </Link></>
+                )
+                    : (<div className="loader"><ReactBootStrap.Spinner animation="border" variant="info" /></div>)}
             </div>
-            <Link to='/create'>
-                <div className="addpopup"><img src="https://img.icons8.com/ios-filled/50/000000/add--v1.png" /></div>
-            </Link>
         </>
     );
 };

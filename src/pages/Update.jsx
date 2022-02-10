@@ -92,7 +92,7 @@ const Update = () => {
                     </div>
                     <div className="updes textbox">
                         <label htmlFor="new-des">Des.</label>
-                        <textarea name="new-des" id="new-des" cols="30" rows="2" autoComplete='false' onChange={handleContent} value={content}></textarea>
+                        <textarea name="new-des" id="new-des" cols="30" rows="3" autoComplete='false' onChange={handleContent} value={content}></textarea>
                     </div>
 
                     <div className="btns">
