@@ -99,8 +99,7 @@ a{
 
 .todo-contents.isdone{
     text-decoration: line-through;
-    color: var(--primaryalt);
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 .show-btn{
@@ -415,14 +414,14 @@ a{
     cursor: pointer;
 }
 
-.work i,.work .todo-title{
+.work i,.work .todo-title,.work .todo-contents.isdone{
     color: #41E2BA;
 }
 
-.family svg,.family i,.family .todo-title{
+.family svg,.family i,.family .todo-title,.family .todo-contents.isdone{
     color: #FE5E41;
 }
 
-.chill i,.chill .todo-title{
+.chill i,.chill .todo-title,.chill .todo-contents.isdone{
     color: #FFBF00;
 }
