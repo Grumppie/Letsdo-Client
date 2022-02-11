@@ -2,9 +2,14 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import * as ReactBootStrap from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse, faHouseChimney } from '@fortawesome/free-solid-svg-icons'
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 const Api_base = `https://lets-do-gru.herokuapp.com/`
 // const Api_base = 'http://localhost:4000/'
+
+library.add([faHouse, faHouseChimney])
 
 const Update = () => {
 
@@ -69,7 +74,6 @@ const Update = () => {
         goback()
     }
 
-
     return (
         <div className='update-page'>
             <div className="up-header">
@@ -108,11 +112,9 @@ const Update = () => {
             {/* <div className="work-in-progress">
                 work in progress <img src="https://img.icons8.com/material-outlined/50/000000/work.png" />
             </div> */}
-
-            <div className="home-btn">
-
+            <div className="home-btn" onClick={goback}>
+                <FontAwesomeIcon icon="fa-solid fa-house-chimney" />
             </div>
-
         </div>
     );
 

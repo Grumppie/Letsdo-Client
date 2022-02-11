@@ -5,7 +5,7 @@
     --secondary:#006dc7;
     --primaryalt:#42a9fd;
     --secondaryalt:#11003f;
-    --shadow:#00000069;
+    --shadow:#00000055;
     --white:#ffffff;
     --title:#0074e0;
     --pink:#ffb6c2;
@@ -125,7 +125,7 @@ a{
     width: fit-content;
     border-radius: 50%;
     box-shadow: 0px 0px 50px var(--shadow);
-    transition: 0.5s ease;
+    transition: 0.3s ease;
 }
 
 .addpopup:hover img{
@@ -388,4 +388,29 @@ a{
 .work-in-progress img{
     margin-left: 1rem;
     height: 2rem;
+}
+
+.home-btn{
+    background-color: black;
+    color: var(--primaryalt);
+    font-size: 1.2rem;
+    height: 3rem;
+    width: 3rem;
+    box-shadow: 0px 0px 50px var(--shadow);
+    transition: 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 3rem;
+    left: 80%;
+    border: 2px solid var(--primaryalt);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.home-btn:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 }

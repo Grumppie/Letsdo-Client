@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse, faHouseChimney } from '@fortawesome/free-solid-svg-icons'
+import { library } from "@fortawesome/fontawesome-svg-core";
 
+library.add([faHouse, faHouseChimney])
 
 const Api_base = `https://lets-do-gru.herokuapp.com/`
 // const Api_base = 'http://localhost:4000/'
@@ -68,6 +72,9 @@ const Create = () => {
                     Create Todo <i className="fas fa-location-arrow"></i>
                 </div>
             </form>
+            <div className="home-btn" onClick={goback}>
+                <FontAwesomeIcon icon="fa-solid fa-house-chimney" />
+            </div>
         </div >
     );
 };
