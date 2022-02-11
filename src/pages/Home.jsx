@@ -126,9 +126,9 @@ const Home = () => {
                         {todos.map((todo) => {
                             const isdone = (todo.completed) ? "todo-contents isdone" : "todo-contents";
                             return (
-                                <div className='todo' key={todo._id} onClick={() => completeTodo(todo._id)}>
+                                <div className={`todo ${todo.category}`} key={todo._id} onClick={() => completeTodo(todo._id)}>
                                     <div className={isdone}>
-                                        <div className="check">
+                                        <div className={`check ${todo.category}`}>
                                             {categoryIcon(todo.category)}
                                         </div>
                                         <div className="todo-title">{todo.title}</div>

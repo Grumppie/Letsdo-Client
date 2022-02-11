@@ -414,3 +414,15 @@ a{
     transform: scale(1.1);
     cursor: pointer;
 }
+
+.work i,.work .todo-title{
+    color: #41E2BA;
+}
+
+.family svg,.family i,.family .todo-title{
+    color: #FE5E41;
+}
+
+.chill i,.chill .todo-title{
+    color: #FFBF00;
+}
