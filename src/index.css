@@ -105,6 +105,13 @@ a{
 .show-btn{
     text-align: center;
     cursor: pointer;
+    width: fit-content;
+}
+
+.link{
+    width: fit-content;
+    margin: auto;
+    text-decoration: none;
 }
 
 .todo:hover{
@@ -209,7 +216,11 @@ a{
 
 .show-btn{
     font-size: 0.8rem;
-    color: #ffffff;
+    color: #c6cbff;
+}
+
+.show-btn:hover{
+    color:#ffffff
 }
 
 .createpage form .textbox input,.createpage form .textbox select,.createpage form .textbox textarea{
