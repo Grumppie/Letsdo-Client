@@ -1,11 +1,15 @@
 import React from 'react';
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom'
 import * as ReactBootStrap from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 const Api_base = `https://lets-do-gru.herokuapp.com/`
 // const Api_base = 'http://localhost:4000/'
 
+library.add(faHouse)
 
 const Home = () => {
 
@@ -101,7 +105,7 @@ const Home = () => {
             case "chill":
                 return (<i className="fas fa-laugh-beam"></i>)
             case "family":
-                return (<i className="fas fa-users"></i>)
+                return (<FontAwesomeIcon icon="fa-solid fa-house" />)
         }
     }
 
