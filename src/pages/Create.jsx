@@ -59,6 +59,7 @@ const Create = () => {
                         <option value={"chill"} >chill</option>
                         <option value={"family"} >family</option>
                     </select>
+                    <i class="arrow down"></i>
                 </div>
                 <div className="newtitle textbox">
                     <label htmlFor="new-title">Todo</label>

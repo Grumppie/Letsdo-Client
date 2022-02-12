@@ -89,6 +89,7 @@ const Update = () => {
                             <option value={"chill"} >chill</option>
                             <option value={"family"} >family</option>
                         </select>
+                        <i class="arrow down"></i>
                     </div>
                     <div className="uptitle textbox">
                         <label htmlFor="new-title">Todo</label>

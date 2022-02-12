@@ -440,3 +440,17 @@ a{
 .delete-btn i{
     color: rgb(180, 36, 0);
 }
+.arrow {
+    border: solid #838dff;
+    border-width: 0 1.8px 1.8px 0;
+    display: inline-block;
+    padding: 3px !important;
+    position: absolute;
+    right: 1.3rem;
+    top: 2.2rem;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
