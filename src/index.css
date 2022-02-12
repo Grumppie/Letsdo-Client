@@ -425,14 +425,18 @@ a{
     cursor: pointer;
 }
 
-.work i,.work .todo-title,.work .todo-contents.isdone{
-    color: #41E2BA;
+.work i{
+    color: #21c299;
 }
 
-.family svg,.family i,.family .todo-title,.family .todo-contents.isdone{
-    color: #FE5E41;
+.family svg{
+    color: #d16527;
 }
 
-.chill i,.chill .todo-title,.chill .todo-contents.isdone{
-    color: #FFBF00;
+.chill i{
+    color: #ffc400;
+}
+
+.delete-btn i{
+    color: rgb(180, 36, 0);
 }
